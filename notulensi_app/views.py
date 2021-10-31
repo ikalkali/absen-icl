@@ -15,6 +15,12 @@ from notulensi_app.serializers import (AsistenSerializer,
 
 
 # Create your views here.
+class asisten_list(APIView):
+  def get(self, request):
+    asisten = Asisten.objects.all()
+    serializer = AsistenSerializer(instance = asisten, many = True)
+    return Response(serializer.data)
+  
 class rapat_list(APIView):
 
   def get(self, request):
